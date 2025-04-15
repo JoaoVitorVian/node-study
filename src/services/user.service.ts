@@ -4,6 +4,10 @@ import { User } from '../entities/user';
 export class UserService {
   private repository = new UserRepository();
 
+  async findByEmail(email: string): Promise<User | null> {
+    return this.repository.findByEmail(email);
+  }
+
   async getAllUsers(): Promise<User[]> {
     return this.repository.getAllUsers();
   }

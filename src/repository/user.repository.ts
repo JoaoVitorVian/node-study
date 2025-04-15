@@ -1,8 +1,12 @@
-import { AppDataSource } from './config/database';
+import { AppDataSource } from './config/data-source';
 import { User } from '../entities/user';
 
 export class UserRepository {
   private userRepository = AppDataSource.getRepository(User);
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.userRepository.findOneBy({ email });
+  }
 
   async getAllUsers(): Promise<User[]> {
     return this.userRepository.find();

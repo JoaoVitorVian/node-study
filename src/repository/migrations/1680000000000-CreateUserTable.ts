@@ -6,7 +6,8 @@ export class CreateUserTable1680000000000 implements MigrationInterface {
       CREATE TABLE "user" (
         "id" SERIAL PRIMARY KEY,
         "name" VARCHAR NOT NULL,
-        "email" VARCHAR NOT NULL UNIQUE
+        "email" VARCHAR NOT NULL UNIQUE,
+        "password VARCHAR NOT NULL,
       )
     `);
   }

@@ -28,26 +28,6 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-export const createUser = async (req: Request, res: Response) => {
-  try {
-    const { name, email } = req.body;
-    
-    if (!name || !email) {
-      res.status(400).json({ message: 'Name and email are required' });
-      return;
-    }
-
-    const newUser = await userService.createUser({ name, email });
-    res.status(201).json(newUser);
-  } catch (error: any) {
-    if (error.code === '23505') {
-      res.status(400).json({ message: 'Email already exists' });
-    } else {
-      res.status(500).json({ message: 'Error creating user' });
-    }
-  }
-};
-
 export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id = parseInt(req.params.id);

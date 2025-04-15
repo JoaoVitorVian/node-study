@@ -15,12 +15,17 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
     "axios": "^1.8.4",
+    "bcryptjs": "^3.0.2",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.14.1",
     "pg-migrations": "^0.1.0",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.22"
+    "typeorm": "^0.3.22",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

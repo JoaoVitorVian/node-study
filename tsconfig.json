@@ -9,6 +9,8 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "types": ["express"],
   }
 }

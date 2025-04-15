@@ -1,20 +1,28 @@
-// import { Request, Response, NextFunction } from 'express';
-// import { logRequest } from '../utils/logger';
+import winston from 'winston';
 
-// export const requestLogger = (req: Request, res: Response, next: NextFunction) => {
-//   const start = Date.now();
-  
-//   res.on('finish', () => {
-//     const duration = Date.now() - start;
-//     logRequest({
-//       method: req.method,
-//       path: req.path,
-//       status: res.statusCode,
-//       duration,
-//       ip: req.ip,
-//       userAgent: req.get('user-agent') || ''
-//     });
-//   });
+const logger = winston.createLogger({
+  level: 'error',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.File({ filename: 'logs/error.log' }),
+    new winston.transports.Console({
+      format: winston.format.simple()
+    })
+  ]
+});
 
-//   next();
-// };
+export const logError = (errorDetails: {
+  message: string;
+  stack?: string;
+  statusCode: number;
+  path: string;
+  method: string;
+}) => {
+  logger.error({
+    ...errorDetails,
+    timestamp: new Date().toISOString()
+  });
+};
