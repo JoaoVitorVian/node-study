@@ -17,8 +17,7 @@ export const authenticate = (
   
   try {
     const decoded = AuthService.verifyToken(token);
-    // Solução alternativa temporária no auth.ts
-(req as any).userId = decoded.userId;
+    (req as any).userId = decoded.userId;
     next();
   } catch (error) {
     res.status(401).json({ error: 'Invalid or expired token' });

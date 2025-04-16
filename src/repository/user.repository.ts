@@ -9,7 +9,7 @@ export class UserRepository {
   }
 
   async getAllUsers(): Promise<User[]> {
-    return this.userRepository.find();
+    return this.userRepository.query("SELECT * FROM public.get_all_users()");
   }
 
   async getUserById(id: number): Promise<User | null> {
